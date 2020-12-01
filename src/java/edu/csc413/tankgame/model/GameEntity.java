@@ -137,8 +137,4 @@ public class GameEntity {
         left = false;
         right = false;
     }
-
-    public void createShell() {
-    }
-
 }

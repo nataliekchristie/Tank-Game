@@ -160,7 +160,8 @@ public class GameDriver implements KeyListener {
                 I know this isn't completely accurate but I essentially am trying to create
                 a shell at the location that the tank currently is, add it to the
                 list with the move function on, so that way when it is commanded to move
-                it will do so and be able to be drawn.
+                it will do so and be able to be drawn. I was able to get this to work properly
+                in other code interpretations but I'm still working it out.
                  */
             }
         }

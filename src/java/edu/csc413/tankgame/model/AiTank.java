@@ -33,4 +33,8 @@ public class AiTank extends Tank {
         generateMovement();
         super.move(gameState);
     }
+
+    /*
+    just a simple code, going to improve on later to account for variables and movement
+     */
 }

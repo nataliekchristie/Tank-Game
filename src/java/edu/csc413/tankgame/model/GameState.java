@@ -48,25 +48,5 @@ public class GameState {
     public GameEntity getEntity(String id){
         return entities.stream().filter(GameEntity -> GameEntity.getId().equals(id)).findAny().get();
     }
-/*
-    public Shell getPlayerShell(){
-        return playerTank.getShell();
-    }
 
-    public double movePlayerShellX(){
-        return playerTank.getX() + 30.0 * (Math.cos(playerTank.getAngle()) + 0.5);
-    }
-
-    public double movePlayerShellY(){
-        return playerTank.getY() + 30.0 * (Math.cos(playerTank.getAngle()) + 0.5);
-    }
-
-    public double moveAiShellX(){
-        return aiTank.getX() + 30.0 * (Math.cos(aiTank.getAngle()) + 0.5);
-    }
-
-    public double moveAiShellY(){
-        return aiTank.getY() + 30.0 * (Math.cos(aiTank.getAngle()) + 0.5);
-    }
-*/
 }

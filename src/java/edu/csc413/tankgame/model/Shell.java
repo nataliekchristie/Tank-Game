@@ -25,5 +25,9 @@ public class Shell extends GameEntity{
         super.moveForward();
     }
 
+    /*
+    Not necessary, just working with ideas for the move update.
+     */
+
 
 }

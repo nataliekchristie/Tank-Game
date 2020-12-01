@@ -13,8 +13,6 @@ public class Tank extends GameEntity {
     private static final double MOVEMENT_SPEED = 3.0;
     private static final double TURN_SPEED = Math.toRadians(3.0);
     private boolean shoot = false;
-    private ArrayList<Shell> playerShells = new ArrayList<>();
-
 
     public Tank(String id, double x, double y, double angle) {
         super(id,x,y,angle);
@@ -23,33 +21,10 @@ public class Tank extends GameEntity {
         super.setTurnSpeed(TURN_SPEED);
     }
 
-    @Override
-    public void createShell(){
-        Shell shell = new Shell(getShellX(),getShellY(),super.getAngle());
-        playerShells.add(shell);
-    }
-
-    public void shootOn(){
-        shoot = true;
-    }
-
     // TODO: The methods below are provided so you don't have to do the math for movement. However, note that they are
     // protected. You should not be calling these methods directly from outside the Tank class hierarchy. Instead,
     // consider how to design your Tank class(es) so that a Tank can represent both a player-controlled tank and an AI
     // controlled tank.
-
-/*
-    public void switchShootOn(){
-        shot = true;
-    }
-
-    public void switchShotOff(){
-        shot = false;
-    }
-
-    public boolean isShot(){
-        return shot;
-    }*/
 
 
 
