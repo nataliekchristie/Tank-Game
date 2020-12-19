@@ -42,13 +42,14 @@ public class GameDriver {
 
 
     public GameDriver() {
-        mainView = new MainView();
+        mainView = new MainView(this);
         runGameView = mainView.getRunGameView();
         gameState = new GameState();
     }
 
     public void start() {
         mainView.setScreen(MainView.Screen.START_MENU_SCREEN);
+
         // This should set the MainView's screen to the start menu screen.
     }
 

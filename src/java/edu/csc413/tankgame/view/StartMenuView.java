@@ -40,7 +40,7 @@ public class StartMenuView extends JPanel {
     // You'll need to provide a way for GameDriver to respond to button presses in this view. Note that below, we add
     // null ActionListeners to the buttons, which don't do anything. How can we change that to be an ActionListener that
     // directs us back to the code in GameDriver?
-    public StartMenuView(String startButtonText) {
+    public StartMenuView(String startButtonText, GameDriver gameDriver) {
         URL imageUrl = getClass().getClassLoader().getResource(START_MENU_IMAGE_FILE);
         if (imageUrl == null) {
             throw new RuntimeException("Unable to create an image URL from: " + START_MENU_IMAGE_FILE);
@@ -57,7 +57,6 @@ public class StartMenuView extends JPanel {
         ActionListener startAction = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-               GameDriver gameDriver = new GameDriver();
                gameDriver.runView();
             }
         };
@@ -65,7 +64,6 @@ public class StartMenuView extends JPanel {
         ActionListener exitAction = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                 GameDriver gameDriver = new GameDriver();
                  gameDriver.runExit();
             }
         };
