@@ -224,7 +224,7 @@ public class GameDriver {
             } else if (entity instanceof Tank) {
                 runGameView.addAnimation(runGameView.BIG_EXPLOSION_ANIMATION, runGameView.BIG_EXPLOSION_FRAME_DELAY,
                         entity.getX(), entity.getY());
-                if (entity.getId().equals(gameState.PLAYER_TANK_ID)||gameState.getEnemies().isEmpty()) {
+                if (entity.getId().equals(gameState.PLAYER_TANK_ID)) {
                   runGameView.addDrawableEntity("GAMEOVER",runGameView.GAME_OVER_IMG,
                             runGameView.GAME_OVER_X,runGameView.GAME_OVER_Y,runGameView.GAME_OVER_ANGLE);
                     return false;
