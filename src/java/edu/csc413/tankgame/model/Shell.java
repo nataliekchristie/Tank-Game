@@ -11,6 +11,9 @@ public class Shell extends GameEntity{
     private static final double MOVEMENT_SPEED = 4.0;
     private static long uniqueId = 0L;
 
+    public boolean isNew = true;
+
+
     public Shell(double x, double y, double angle) {
         super(x,y,angle);
         super.setID(getUniqueId());
@@ -21,13 +24,25 @@ public class Shell extends GameEntity{
         return SHELL_ID_PREFIX + uniqueId++;
     }
 
-    public void shoot(GameState gamestate){
-        super.moveForward();
+    public void move(GameState gameState){
+        super.move(gameState);
+        isNew = false;
     }
 
-    /*
-    Not necessary, just working with ideas for the move update.
-     */
+    public void makeOld(){
+        isNew = false;
+    }
 
+    @Override
+    public double getXBound(){
+        super.setXSize(24.0);
+        return super.getXBound();
+    }
+
+    @Override
+    public double getYBound(){
+        super.setYSize(24.0);
+        return super.getYBound();
+    }
 
 }

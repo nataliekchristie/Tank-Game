@@ -2,12 +2,19 @@ package edu.csc413.tankgame.model;
 
 public class AiTank extends Tank {
 
-    int count = 0;
+    // Dumb tank. Points and shoots from same position.
 
     public AiTank(String id, double x, double y, double angle) {
         super(id, x, y, angle);
+        super.setCoolDownValue(700);
     }
 
+    @Override
+    public void resetCoolDown(){
+        super.setCoolDownValue(700);
+    }
+
+/*
     public void generateMovement(){
         if(count>0){
             count--;
@@ -28,13 +35,14 @@ public class AiTank extends Tank {
         }
         count = 0;
     }
-    @Override
+*/
+    // ^^ This was just a little sloppily written movement code for when I was playing around.
+    // Ultimately I chose to keep it a dumb tank but left here in case I want to play around.
+
     public void move(GameState gameState){
-        generateMovement();
+       super.shoot(gameState);
+       // generateMovement();
         super.move(gameState);
     }
 
-    /*
-    just a simple code, going to improve on later to account for variables and movement
-     */
 }

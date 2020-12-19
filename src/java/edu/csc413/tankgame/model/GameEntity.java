@@ -1,14 +1,24 @@
 package edu.csc413.tankgame.model;
 
+import java.util.ArrayList;
+
 public class GameEntity {
     private String id;
     private double x;
     private double y;
     private double angle;
     private double speed;
-    private boolean up,down,right,left,shot = false;
+    private boolean up,down,right,left = false;
     private double turnSpeed;
-    private Shell shell;
+    private double coolDown = 300;
+    private boolean isNew = true;
+    private boolean collided = false;
+    private double lives = 3;
+    private String originTank;
+    private double powerUpCounter = 0;
+
+    private double Xsize = 0;
+    private double Ysize = 0;
 
     public GameEntity(double x, double y, double angle){
         this.x = x;
@@ -21,6 +31,48 @@ public class GameEntity {
         this.x = x;
         this.y = y;
         this.angle = angle;
+    }
+
+    public double getLives(){
+        return lives;
+    }
+
+    public void decrementLives(){
+        lives-=1;
+    }
+
+    public void setLives(double lives){
+        this.lives = lives;
+    }
+
+    public void addLife(){ lives+=1; }
+
+    public double getCoolDown(){
+        return coolDown;
+    }
+
+    public void decrementCoolDown(){
+        coolDown-=1;
+    }
+
+    public void resetCoolDown(){
+        coolDown = 300;
+    }
+
+    public void setCoolDownValue(double x){
+        coolDown = x;
+    }
+
+    public void collisionTrue(){
+        collided = true;
+    }
+
+    public void collisionFalse(){
+        collided = false;
+    }
+
+    public boolean collision(){
+        return collided;
     }
 
     public String getId(){
@@ -41,10 +93,6 @@ public class GameEntity {
 
     public void setTurnSpeed(double turnSpeed){
         this.turnSpeed = turnSpeed;
-    }
-
-    public String getID(){
-        return id;
     }
 
     public double getX(){
@@ -137,4 +185,53 @@ public class GameEntity {
         left = false;
         right = false;
     }
+
+    public boolean isNew(){
+        return isNew;
+    }
+
+    public void makeOld(){
+        isNew = false;
+    }
+
+    public double getXBound(){
+          return getX() + Xsize;
+    }
+
+    public double getYBound(){
+          return getY() + Ysize;
+    }
+
+    public void setXSize(double X){
+        Xsize = X;
+    }
+
+    public void setYSize(double Y){
+        Ysize = Y;
+    }
+
+    public void shoot(GameState gamestate){
+
+    }
+
+    public void resetPowerUpCounter(){
+        powerUpCounter=700;
+    }
+
+    public double getPowerUpCounter(){
+        return powerUpCounter;
+    }
+
+    public void decrementPowerUp(){
+        powerUpCounter-=1;
+    }
+
+    public String getOriginTank(){
+        return originTank;
+    }
+
+    public void setOriginTank(String originTank){
+        this.originTank = originTank;
+    }
+
 }

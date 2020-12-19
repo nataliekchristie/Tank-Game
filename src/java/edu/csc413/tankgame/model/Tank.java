@@ -12,7 +12,6 @@ import java.util.ArrayList;
 public class Tank extends GameEntity {
     private static final double MOVEMENT_SPEED = 3.0;
     private static final double TURN_SPEED = Math.toRadians(3.0);
-    private boolean shoot = false;
 
     public Tank(String id, double x, double y, double angle) {
         super(id,x,y,angle);
@@ -20,6 +19,30 @@ public class Tank extends GameEntity {
         super.setSpeed(MOVEMENT_SPEED);
         super.setTurnSpeed(TURN_SPEED);
     }
+
+@Override
+public void shoot(GameState gamestate){
+    if(getCoolDown()==0&&getPowerUpCounter()>0){
+        Shell newShell = new Shell(getShellX(), getShellY(), super.getAngle());
+        newShell.switchUpOn();
+        newShell.setOriginTank(super.getId());
+        gamestate.addShell(newShell);
+        setCoolDownValue(20);
+    }
+    else if(getCoolDown()==0&&getPowerUpCounter()==0){
+        Shell newShell = new Shell(getShellX(), getShellY(), super.getAngle());
+        newShell.switchUpOn();
+        newShell.setOriginTank(super.getId());
+        gamestate.addShell(newShell);
+        resetCoolDown();
+    }
+
+}
+
+    public double getTurnSpeed(){
+        return TURN_SPEED;
+    }
+
 
     // TODO: The methods below are provided so you don't have to do the math for movement. However, note that they are
     // protected. You should not be calling these methods directly from outside the Tank class hierarchy. Instead,
@@ -42,5 +65,17 @@ public class Tank extends GameEntity {
 
     public void move(GameState gameState){
         super.move(gameState);
+    }
+
+    @Override
+    public double getXBound(){
+        super.setXSize(55.0);
+        return super.getXBound();
+    }
+
+    @Override
+    public double getYBound(){
+        super.setYSize(55.0);
+        return super.getYBound();
     }
 }

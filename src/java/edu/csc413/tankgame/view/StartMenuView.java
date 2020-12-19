@@ -1,6 +1,7 @@
 package edu.csc413.tankgame.view;
 
 import edu.csc413.tankgame.GameDriver;
+import edu.csc413.tankgame.model.GameState;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -29,6 +30,9 @@ public class StartMenuView extends JPanel {
 
     public static final String START_BUTTON_ACTION_COMMAND = "start_ac";
     public static final String EXIT_BUTTON_ACTION_COMMAND = "exit_ac";
+    public static final String CONTINUE_BUTTON_ACTION_COMMAND = "continue_ac";
+
+    public boolean start = false;
 
     private final BufferedImage menuBackground;
 
@@ -53,8 +57,8 @@ public class StartMenuView extends JPanel {
         ActionListener startAction = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                GameDriver gameDriver = new GameDriver();
-                gameDriver.runView();
+               GameDriver gameDriver = new GameDriver();
+               gameDriver.runView();
             }
         };
 
@@ -66,10 +70,29 @@ public class StartMenuView extends JPanel {
             }
         };
 
+        ActionListener continueAction = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        };
+
         addButton(startButtonText, START_BUTTON_BOUNDS, START_BUTTON_ACTION_COMMAND, startAction);
         addButton("Exit", EXIT_BUTTON_BOUNDS, EXIT_BUTTON_ACTION_COMMAND, exitAction);
+        addButton("Continue", START_BUTTON_BOUNDS, CONTINUE_BUTTON_ACTION_COMMAND, continueAction);
 
     }
+
+    public String action;
+
+    public void setAction(String clicked){
+        this.action = clicked;
+    }
+
+    public String returnAction(){
+        return action;
+    }
+
 
     private void addButton(
             String buttonText, Rectangle buttonBounds, String buttonActionCommand, ActionListener actionListener) {
